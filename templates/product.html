@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <style>
+        .product-container {
+            display: flex;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .product-image img {
+            width: 300px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .product-details {
+            flex-grow: 1;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .price {
+            color: red;
+            font-size: 24px;
+        }
+
+        .installment, .seller-info, .shipping-info {
+            margin-bottom: 10px;
+        }
+
+        .color-options p, .color-options button {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .add-to-cart {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <div class="product-container" style="padding: 20px 200px 20px 200px;">
+        <div class="product-image">
+            <img src="{{ product[4] }}">
+        </div>
+        <div class="product-details">
+            <h1>{{ product[1] }}</h1>
+            <p class="price">{{ product[3] }}₺</p>
+            <p class="installment">12 ay varan Taksitle</p>
+            <p class="shipping-info">200 TL Üzeri kargo bedava</p>
+            <p class="product-description">{{ product[2] }}</p>
+            <div class="color-options">
+                <p>Colors:</p>
+                {% for color in product[8].split(',') %}
+                    <button class="btn" style="color: white; background-color: {{ color }}">{{ color }}</button>
+                {% endfor %}
+            </div>
+            <br>
+            <input type="number" value="1" min="1">
+            <br><br>
+            <div class="purchase-info">
+                <button class="add-to-cart">Sepete Ekle</button>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
